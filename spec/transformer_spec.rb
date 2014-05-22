@@ -18,6 +18,10 @@ describe Transformer do
             output = 'foo-test argument --bar="baz" --wow=such -f="amaze"'
             @transformer.transform(input).should == output
         end
+
+        it "opens collapsed options" do
+            @transformer.transform("foo -vv -abc").should == "foo -v -v -a -b -c"
+        end
     end
 
 end
