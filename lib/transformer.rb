@@ -20,9 +20,11 @@ class Transformer
             end
             options
         end
-        # puts command
+        #
+        return command
+        #
         command.gsub /\-([a-z]{1})([^\sa-z]+)/i do |match|
-            # puts match
+            puts match
             key, value = ['', '']
             "-#{key}=#{value}"      
         end
