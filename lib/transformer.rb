@@ -23,13 +23,8 @@ class Transformer
             end
             options
         end
-        #
-        return command
-        #
         command.gsub /\-([a-z]{1})([^\sa-z]+)/i do |match|
-            puts match
-            key, value = ['', '']
-            "-#{key}=#{value}"      
+            "#{match.slice(0, 2)}=#{match.slice(2, match.length)}"      
         end
     end
 
