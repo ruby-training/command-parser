@@ -22,6 +22,10 @@ describe Transformer do
         it "opens collapsed options" do
             @transformer.transform("foo -vv -abc").should == "foo -v -v -a -b -c"
         end
+
+        it "places a white space" do
+            @transformer.transform("foo -abc10").should == "foo -a -b -c=10"
+        end
     end
 
 end
