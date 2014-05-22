@@ -15,11 +15,12 @@ class Transformer
     def open_collapsed_options command
         command.gsub! /\s\-([a-z]{2,})/i do |match|
             options = String.new
-            match.split('').each do |option|
-                options << " -#{option}"
+            match.gsub("-", "").split("").each do |option|
+                options << " -#{option}" unless option.strip.empty?
             end
             options
         end
+        # puts command
         command.gsub /\-([a-z]{1})([^\sa-z]+)/i do |match|
             # puts match
             key, value = ['', '']
