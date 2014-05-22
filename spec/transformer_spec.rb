@@ -8,7 +8,15 @@ describe Transformer do
 
     describe "#new" do
         it "can be instantiated" do
-            @transformer.should_be_an_instance_of Transformer
+            @transformer.should be_an_instance_of Transformer
+        end
+    end
+
+    describe "#transform" do
+        it "replaces white spaces" do
+            input = 'foo-test argument --bar "baz" --wow=such -f "amaze"'
+            output = 'foo-test argument --bar="baz" --wow=such -f="amaze"'
+            @transformer.transform(input).should == output
         end
     end
 
