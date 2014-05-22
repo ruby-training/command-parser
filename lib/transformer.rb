@@ -7,8 +7,11 @@ class Transformer
     def replace_white_spaces command
         command.gsub /\s\-([\-a-z]+)\s([^\s]+)/i do |match|
             key, value = match.split " "
-            " #{key} #{value}" if value.start_with? "-" 
-            " #{key}=#{value}"
+            if value.start_with? "-"
+                match
+            else
+                " #{key}=#{value}"
+            end
         end
     end
 
