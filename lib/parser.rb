@@ -6,4 +6,8 @@ class Parser
         @transformer = transformer
     end
 
+    def parse command
+        {"name" => nil, "arguments" => [], "options" => []}
+    end
+
 end
