@@ -2,7 +2,7 @@ class SmartSplit
 
     def initialize
         @selectors = []
-        @string = nil
+        @separator = nil
     end
 
     def be_aware_of selector
@@ -13,16 +13,16 @@ class SmartSplit
         @selectors
     end
 
-    def set_string string
-        @string = string
+    def set_separator separator
+        @separator = separator
     end
 
-    def get_string
-        @string
+    def get_separator
+        @separator
     end
 
-    def split separator
-        
+    def split string
+
     end
 
 end
