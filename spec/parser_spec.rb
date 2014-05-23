@@ -21,6 +21,8 @@ describe Parser do
     describe "#parse" do
         it "parses a command" do
             @parser.parse("").should == {"name" => nil, "arguments" => [], "options" => []}
+
+            @parser.parse("foo").should == {"name" => "foo", "arguments" => [], "options" => []}
         end
     end
 

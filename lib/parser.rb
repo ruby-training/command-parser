@@ -7,7 +7,8 @@ class Parser
     end
 
     def parse command
-        {"name" => nil, "arguments" => [], "options" => []}
+        name = command.length > 0 ? command : nil
+        {"name" => name, "arguments" => [], "options" => []}
     end
 
 end
