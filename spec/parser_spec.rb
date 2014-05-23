@@ -20,9 +20,11 @@ describe Parser do
 
     describe "#parse" do
         it "parses a command" do
-            @parser.parse("").should == {"name" => nil, "arguments" => [], "options" => []}
+            result = {"name" => nil, "arguments" => [], "options" => []}
 
-            @parser.parse("foo").should == {"name" => "foo", "arguments" => [], "options" => []}
+            @parser.parse("").should == result
+
+            @parser.parse("foo").should == result.merge({"name" => "foo"})
         end
     end
 
