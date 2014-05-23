@@ -21,4 +21,18 @@ describe SmartSplit do
         end
     end
 
+    describe "#set_string" do
+        it "receives a string" do
+            @smart_split.set_string "foo"
+            @smart_split.get_string.should == "foo"
+        end
+    end
+
+    describe "#split" do
+        it "splits a string into chunks" do
+            @smart_split.set_string "foo"
+            @smart_split.split(":").should == ["foo"]
+        end
+    end
+
 end
