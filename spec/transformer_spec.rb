@@ -7,7 +7,7 @@ describe Transformer do
     end
 
     describe "#new" do
-        it "can be instantiated" do
+        it "is instantiable" do
             @transformer.should be_an_instance_of Transformer
         end
     end
