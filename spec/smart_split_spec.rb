@@ -12,10 +12,10 @@ describe SmartSplit do
         end
     end
 
-    describe "#be_aware_of" do
+    describe "#add_selector" do
         it "receives a selector" do
-            @smart_split.be_aware_of "["
-            @smart_split.be_aware_of "]"
+            @smart_split.add_selector "["
+            @smart_split.add_selector "]"
 
             @smart_split.get_selectors.should == ["[", "]"]
         end

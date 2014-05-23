@@ -5,7 +5,7 @@ class SmartSplit
         @separator = nil
     end
 
-    def be_aware_of selector
+    def add_selector selector
         @selectors.push selector
     end
 
@@ -22,7 +22,7 @@ class SmartSplit
     end
 
     def split string
-
+        [string]
     end
 
 end
