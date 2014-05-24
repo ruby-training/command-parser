@@ -3,7 +3,7 @@ require_relative '../lib/parser'
 describe Parser do
 
     before :each do
-        @parser = Parser.new(Transformer.new)
+        @parser = Parser.new(Transformer.new, SmartSplit.new)
     end
     
     describe "#new" do
@@ -13,8 +13,14 @@ describe Parser do
 
         it "validates the first argument" do
             expect {
-                Parser.new nil
+                Parser.new(nil, nil)
             }.to raise_error ArgumentError, "Got NilClass instead of Transformer"
+        end
+
+        it "validates the second argument" do
+            expect {
+                Parser.new(Transformer.new, nil)
+            }.to raise_error ArgumentError, "Got NilClass instead of SmartSplit"
         end
     end
 
