@@ -31,8 +31,16 @@ describe SmartSplit do
     describe "#split" do
         it "splits a string into chunks" do
             @smart_split.set_separator ","
+
             @smart_split.split("").should == []
             @smart_split.split("foo").should == ["foo"]
+            @smart_split.split("foo,bar,baz") == ["foo", "bar", "baz"]
+
+            @smart_split.add_selector "["
+            @smart_split.add_selector "]"
+
+            @smart_split.split("foo,[bar,baz]").should == ["foo", "bar,baz"]
+            @smart_split.split("foo,[bar,baz],wow").should == ["foo", "bar,baz", "wow"]
         end
     end
 
