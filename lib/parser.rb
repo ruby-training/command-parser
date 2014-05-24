@@ -12,7 +12,7 @@ class Parser
     end
 
     def parse command
-        @chunks = split_into_chunks command
+        @chunks = split_into_chunks @transformer.transform(command)
         {"name" => @chunks.shift, "arguments" => @chunks, "options" => {}}
     end
 
@@ -20,6 +20,14 @@ class Parser
         @smart_split.split command
     end 
 
-    private :split_into_chunks
+    def is_option? chunk
+        chunk.start_with? "-"
+    end
+
+    def is_argument? chunk
+        ! is_option chunk
+    end
+
+    private :split_into_chunks, :is_argument?, :is_option?
 
 end
