@@ -5,11 +5,21 @@ class Parser
         raise ArgumentError, "Got #{smart_split.class} instead of SmartSplit" unless smart_split.is_a? SmartSplit
         @transformer = transformer
         @smart_split = smart_split
+
+        @smart_split.set_separator " "
+        @smart_split.add_selector "\""
+        @smart_split.add_selector '\''
     end
 
     def parse command
-        name = command.length > 0 ? command : nil
-        {"name" => name, "arguments" => [], "options" => []}
+        @chunks = split_into_chunks command
+        {"name" => @chunks.shift, "arguments" => @chunks, "options" => []}
     end
+
+    def split_into_chunks command
+        @smart_split.split command
+    end 
+
+    private :split_into_chunks
 
 end
