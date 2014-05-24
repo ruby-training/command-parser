@@ -22,7 +22,7 @@ class SmartSplit
     end
 
     def split string
-        [string]
+        string.split @separator
     end
 
 end
