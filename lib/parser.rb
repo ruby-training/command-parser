@@ -37,10 +37,21 @@ class Parser
     end
 
     def extract_options 
-        {}
+        chunks = @chunks.find_all { |chunk| is_option? chunk }
+        options = {}
+        chunks.each do |chunk|
+            key, value = parse_option chunk
+            options[key] = {"value" => value, "volume" => 1}
+        end
+        options
+    end
+
+    def parse_option chunk
+        key, value = chunk.split "="
+        [key.tr("-", ""), value]
     end
 
     private :split_into_chunks, :is_argument?, :is_option?, \
-            :extract_arguments, :extract_options
+            :extract_arguments, :extract_options, :parse_option
 
 end
