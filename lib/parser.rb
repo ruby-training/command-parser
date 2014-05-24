@@ -13,7 +13,11 @@ class Parser
 
     def parse command
         @chunks = split_into_chunks @transformer.transform(command)
-        {"name" => @chunks.shift, "arguments" => @chunks, "options" => {}}
+        {
+            "name" => @chunks.shift,
+            "arguments" => extract_arguments, 
+            "options" => extract_options
+        }
     end
 
     def split_into_chunks command
@@ -25,9 +29,18 @@ class Parser
     end
 
     def is_argument? chunk
-        ! is_option chunk
+        ! is_option? chunk
     end
 
-    private :split_into_chunks, :is_argument?, :is_option?
+    def extract_arguments
+        @chunks.find_all { |chunk| is_argument? chunk }
+    end
+
+    def extract_options 
+        {}
+    end
+
+    private :split_into_chunks, :is_argument?, :is_option?, \
+            :extract_arguments, :extract_options
 
 end
