@@ -26,7 +26,7 @@ describe Parser do
 
     describe "#parse" do
         it "parses a command" do
-            result = {"name" => nil, "arguments" => [], "options" => []}
+            result = {"name" => nil, "arguments" => [], "options" => {}}
 
             @parser.parse("").should == result
 
@@ -37,6 +37,17 @@ describe Parser do
             @parser.parse(" foo  bar   ").should == result.merge({"name" => "foo", "arguments" => ["bar"]})
         
             @parser.parse("foo \"bar\" 'baz'").should == result.merge({"name" => "foo", "arguments" => ["bar", "baz"]})
+        
+            @parser.parse("foo --bar baz --wow=such").should == result.merge({"name" => "foo", "options" => {
+                "bar" => {
+                    "value" => "baz",
+                    "volume" => 1
+                },
+                "wow" => {
+                    "value" => "such",
+                    "volume" => 1
+                }
+            }})
         end
     end
 

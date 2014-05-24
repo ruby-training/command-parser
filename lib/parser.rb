@@ -13,7 +13,7 @@ class Parser
 
     def parse command
         @chunks = split_into_chunks command
-        {"name" => @chunks.shift, "arguments" => @chunks, "options" => []}
+        {"name" => @chunks.shift, "arguments" => @chunks, "options" => {}}
     end
 
     def split_into_chunks command
