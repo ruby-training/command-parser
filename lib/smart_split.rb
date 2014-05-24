@@ -31,7 +31,7 @@ class SmartSplit
                 next
             end
             if not(selector) and (character == @separator)
-                chunks.push buffer
+                chunks.push buffer unless buffer.empty?
                 buffer = ""
             else
                 buffer << character
