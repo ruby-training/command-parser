@@ -14,7 +14,7 @@ describe Parser do
         it "validates the first argument" do
             expect {
                 Parser.new nil
-            }.to raise_error ArgumentError, "Got NilClass, not Transformer"
+            }.to raise_error ArgumentError, "Got NilClass instead of Transformer"
         end
     end
 
