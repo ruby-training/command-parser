@@ -1,8 +1,7 @@
 class Parser
 
     def initialize transformer
-        raise ArgumentError, "Got #{transformer.class}, not Transformer" \
-                                        unless transformer.instance_of? Transformer 
+        raise ArgumentError, "Got #{transformer.class} instead of Transformer" unless transformer.is_a? Transformer 
         @transformer = transformer
     end
 
