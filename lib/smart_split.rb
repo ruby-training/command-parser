@@ -22,7 +22,25 @@ class SmartSplit
     end
 
     def split string
-        string.split @separator
+        chunks = []
+        buffer = ""
+        selector = false
+        string.split("").each do |character|
+            if @selectors.include? character
+                selector = ! selector
+                next
+            end
+            if not(selector) and (character == @separator)
+                chunks.push buffer
+                buffer = ""
+            else
+                buffer << character
+            end
+        end
+        if not buffer.empty?
+            chunks.push buffer
+        end
+        chunks
     end
 
 end
