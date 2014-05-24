@@ -31,6 +31,7 @@ describe SmartSplit do
     describe "#split" do
         it "splits a string into chunks" do
             @smart_split.set_separator ","
+            @smart_split.split("").should == []
             @smart_split.split("foo").should == ["foo"]
         end
     end
