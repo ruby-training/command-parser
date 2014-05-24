@@ -35,6 +35,8 @@ describe Parser do
             @parser.parse("foo bar baz").should == result.merge({"name" => "foo", "arguments" => ["bar", "baz"]})
         
             @parser.parse(" foo  bar   ").should == result.merge({"name" => "foo", "arguments" => ["bar"]})
+        
+            @parser.parse("foo \"bar\" 'baz'").should == result.merge({"name" => "foo", "arguments" => ["bar", "baz"]})
         end
     end
 
