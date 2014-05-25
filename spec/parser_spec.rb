@@ -48,6 +48,21 @@ describe Parser do
                     "volume" => 1
                 }
             }})
+
+            @parser.parse("foo --bar -ab10").should == result.merge({"name" => "foo", "options" => {
+                "bar" => {
+                    "value" => nil,
+                    "volume" => 1
+                },
+                "a" => {
+                    "value" => nil,
+                    "volume" => 1
+                },
+                "b" => {
+                    "value" => "10",
+                    "volume" => 1
+                }
+            }})
         end
     end
 
