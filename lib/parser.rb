@@ -41,7 +41,11 @@ class Parser
         options = {}
         chunks.each do |chunk|
             key, value = parse_option chunk
-            options[key] = {"value" => value, "volume" => 1}
+            if options.has_key? key
+                options[key]["volume"] += 1
+            else
+                options[key] = {"value" => value, "volume" => 1}
+            end
         end
         options
     end
